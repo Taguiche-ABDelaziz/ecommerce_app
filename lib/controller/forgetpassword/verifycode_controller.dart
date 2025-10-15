@@ -1,0 +1,50 @@
+import 'package:ecommerce/core/class/statusrquest.dart';
+import 'package:ecommerce/core/constant/routes.dart';
+import 'package:ecommerce/core/function/handlingdatacontroller.dart';
+import 'package:ecommerce/data/datasource/remote/forgetpassword/verifycode.dart';
+import 'package:get/get.dart';
+
+abstract class VerifycodeController extends GetxController {
+  checkCode();
+  goToResetPassword(String verifycode);
+}
+
+class VerifycodeControllerImp extends VerifycodeController {
+  String? email;
+
+  VerifyCodeForgetPasswordData verifyCodeForgetPasswordData =
+      VerifyCodeForgetPasswordData(Get.find());
+
+  StatusRequest? statusRequest;
+
+  @override
+  checkCode() {}
+
+  @override
+  goToResetPassword(verifycode) async {
+    statusRequest = StatusRequest.loading;
+    update();
+    var response = await verifyCodeForgetPasswordData.postData(
+      email!,
+      verifycode,
+    );
+    statusRequest = handlingData(response);
+    if (StatusRequest.success == statusRequest) {
+      if (response['status'] == "success") {
+        Get.offNamed(AppRoute.resetPassword , arguments: {
+          "email": email,
+        });
+      } else {
+        Get.defaultDialog(title: "44".tr, middleText: "49".tr);
+        statusRequest = StatusRequest.failure;
+      }
+    }
+    update();
+  }
+
+  @override
+  void onInit() {
+    email = Get.arguments['email'];
+    super.onInit();
+  }
+}
