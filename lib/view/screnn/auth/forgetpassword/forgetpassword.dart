@@ -1,5 +1,5 @@
 import 'package:ecommerce/controller/forgetpassword/forgetpassword_controller.dart';
-import 'package:ecommerce/core/class/statusrquest.dart';
+import 'package:ecommerce/core/class/handlingdataview.dart';
 import 'package:ecommerce/core/constant/color.dart';
 import 'package:ecommerce/core/function/validinput.dart';
 import 'package:ecommerce/view/widget/auth/custombuttomauth.dart';
@@ -27,41 +27,41 @@ class ForgetPassword extends StatelessWidget {
         ),
       ),
       body: GetBuilder<ForgetPasswordControllerImp>(
-        builder: (controller) =>
-            controller.statusRequest == StatusRequest.loading
-            ? Center(child: Text("Loading....."))
-            : Container(
-                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-                child: Form(
-                  key: controller.formstate,
-                  child: ListView(
-                    children: [
-                      CustomTextTitelAuth(text: "25".tr),
-                      const SizedBox(height: 10),
-                      CustomTextBodyAuthe(text: "11".tr),
-                      const SizedBox(height: 35),
-                      CustomTextFormAuth(
-                        isNumbe: false,
-                        obscureText: false,
-                        valid: (val) {
-                          return validInput(val!, 5, 100, "email");
-                        },
-                        hintText: "13".tr,
-                        labeltext: "12".tr,
-                        mycontroller: controller.email,
-                        iconData: Icons.email_outlined,
-                      ),
-                      CustomButtomAuth(
-                        text: "26".tr,
-                        onPressed: () {
-                          controller.checkemail();
-                        },
-                      ),
-                      SizedBox(height: 25),
-                    ],
+        builder: (controller) => HandlingDataRequest(
+          statusRequest: controller.statusRequest,
+          widget: Container(
+            padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+            child: Form(
+              key: controller.formstate,
+              child: ListView(
+                children: [
+                  CustomTextTitelAuth(text: "25".tr),
+                  const SizedBox(height: 10),
+                  CustomTextBodyAuthe(text: "11".tr),
+                  const SizedBox(height: 35),
+                  CustomTextFormAuth(
+                    isNumbe: false,
+                    obscureText: false,
+                    valid: (val) {
+                      return validInput(val!, 5, 100, "email");
+                    },
+                    hintText: "13".tr,
+                    labeltext: "12".tr,
+                    mycontroller: controller.email,
+                    iconData: Icons.email_outlined,
                   ),
-                ),
+                  CustomButtomAuth(
+                    text: "26".tr,
+                    onPressed: () {
+                      controller.checkemail();
+                    },
+                  ),
+                  SizedBox(height: 25),
+                ],
               ),
+            ),
+          ),
+        ),
       ),
     );
   }

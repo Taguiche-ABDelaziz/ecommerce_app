@@ -20,7 +20,7 @@ class ResetPasswordControllerImp extends ResetPasswordController {
 
   bool isshowpassword = true;
 
-  StatusRequest? statusRequest;
+  StatusRequest statusRequest = StatusRequest.none;
 
   ResetpasswordData resetpasswordData = ResetpasswordData(Get.find());
 
