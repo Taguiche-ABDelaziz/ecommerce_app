@@ -4,12 +4,12 @@ import 'package:ecommerce/core/function/handlingdatacontroller.dart';
 import 'package:ecommerce/data/datasource/remote/forgetpassword/verifycode.dart';
 import 'package:get/get.dart';
 
-abstract class VerifycodeController extends GetxController {
+abstract class VerifyCodeController extends GetxController {
   checkCode();
   goToResetPassword(String verifycode);
 }
 
-class VerifycodeControllerImp extends VerifycodeController {
+class VerifyCodeControllerImp extends VerifyCodeController {
   String? email;
 
   VerifyCodeForgetPasswordData verifyCodeForgetPasswordData =
@@ -24,18 +24,19 @@ class VerifycodeControllerImp extends VerifycodeController {
   goToResetPassword(verifycode) async {
     statusRequest = StatusRequest.loading;
     update();
-    var response = await verifyCodeForgetPasswordData.postData(
+    var response = await verifyCodeForgetPasswordData.postdata(
       email!,
       verifycode,
     );
     statusRequest = handlingData(response);
     if (StatusRequest.success == statusRequest) {
       if (response['status'] == "success") {
-        Get.offNamed(AppRoute.resetPassword , arguments: {
-          "email": email,
-        });
+        Get.offNamed(AppRoute.resetPassword, arguments: {"email": email});
       } else {
-        Get.defaultDialog(title: "44".tr, middleText: "49".tr);
+        Get.defaultDialog(
+          title: "ُWarning",
+          middleText: "Verify Code Not Correct",
+        );
         statusRequest = StatusRequest.failure;
       }
     }

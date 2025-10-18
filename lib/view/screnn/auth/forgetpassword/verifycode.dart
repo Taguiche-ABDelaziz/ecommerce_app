@@ -1,22 +1,21 @@
 import 'package:ecommerce/controller/forgetpassword/verifycode_controller.dart';
-import 'package:ecommerce/core/class/handlingdataview.dart';
 import 'package:ecommerce/core/constant/color.dart';
 import 'package:ecommerce/view/widget/auth/customtextbodyauth.dart';
-import 'package:ecommerce/view/widget/auth/customtexttitelauth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:get/get.dart';
 
-class VerifyCode extends StatelessWidget {
-  const VerifyCode({super.key});
+class VerfiyCode extends StatelessWidget {
+  const VerfiyCode({super.key});
 
   @override
   Widget build(BuildContext context) {
-    Get.put(VerifycodeControllerImp());
+    VerifyCodeControllerImp controller = Get.put(VerifyCodeControllerImp());
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppColor.backgroundcolor,
         centerTitle: true,
+        backgroundColor: AppColor.backgroundcolor,
+        elevation: 0.0,
         title: Text(
           "27".tr,
           style: Theme.of(
@@ -24,37 +23,33 @@ class VerifyCode extends StatelessWidget {
           ).textTheme.displayLarge!.copyWith(color: AppColor.grey),
         ),
       ),
-      body: GetBuilder<VerifycodeControllerImp>(
-        builder: (controller) => HandlingDataRequest(
-          statusRequest: controller.statusRequest,
-          widget: Container(
-            padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-            child: ListView(
-              children: [
-                CustomTextTitelAuth(text: "28".tr),
-                const SizedBox(height: 10),
-                CustomTextBodyAuthe(text: "30".tr),
-                const SizedBox(height: 35),
-                OtpTextField(
-                  borderRadius: BorderRadius.circular(20),
-                  fieldWidth: 50,
-                  numberOfFields: 5,
-                  borderColor: AppColor.primaryColor,
-                  //set to true to show as box or false to show as dash
-                  showFieldAsBox: true,
-                  //runs when a code is typed in
-                  onCodeChanged: (String code) {
-                    //handle validation or checks here
-                  },
-                  //runs when every textfield is filled
-                  onSubmit: (String verificationCode) {
-                    controller.goToResetPassword(verificationCode);
-                  }, // end onSubmit
-                ),
-                SizedBox(height: 25),
-              ],
+      body: Container(
+        padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+        child: ListView(
+          children: [
+            const SizedBox(height: 20),
+            CustomTextBodyAuthe(text: "28".tr),
+            const SizedBox(height: 10),
+            CustomTextBodyAuthe(text: "30".tr),
+            const SizedBox(height: 15),
+            OtpTextField(
+              fieldWidth: 50.0,
+              borderRadius: BorderRadius.circular(20),
+              numberOfFields: 5,
+              borderColor: const Color(0xFF512DA8),
+              //set to true to show as box or false to show as dash
+              showFieldAsBox: true,
+              //runs when a code is typed in
+              onCodeChanged: (String code) {
+                //handle validation or checks here
+              },
+              //runs when every textfield is filled
+              onSubmit: (String verificationCode) {
+                controller.goToResetPassword(verificationCode);
+              }, // end onSubmit
             ),
-          ),
+            const SizedBox(height: 40),
+          ],
         ),
       ),
     );

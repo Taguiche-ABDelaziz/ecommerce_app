@@ -4,8 +4,8 @@ import 'package:ecommerce/linkapi.dart';
 class VerifyCodeForgetPasswordData {
   Crud crud;
   VerifyCodeForgetPasswordData(this.crud);
-  postData(String email, String verifycode) async {
-    var response = await crud.postData(AppLink.resetpassword, {
+  postdata(String email, String verifycode) async {
+    var response = await crud.postData(AppLink.verifycode, {
       "email": email,
       "verifycode": verifycode,
     });

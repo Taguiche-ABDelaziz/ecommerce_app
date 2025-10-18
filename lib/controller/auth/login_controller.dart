@@ -4,6 +4,7 @@ import 'package:ecommerce/core/function/handlingdatacontroller.dart';
 import 'package:ecommerce/data/datasource/remote/auth/login.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 abstract class LoginController extends GetxController {
   login();
@@ -58,6 +59,10 @@ class LoginControllerImp extends LoginController {
 
   @override
   void onInit() {
+    FirebaseMessaging.instance.getToken().then((value) {
+      print(value);
+      String? tokrn = value;
+    });
     email = TextEditingController();
     password = TextEditingController();
     super.onInit();
