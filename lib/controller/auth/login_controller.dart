@@ -1,6 +1,7 @@
 import 'package:ecommerce/core/class/statusrquest.dart';
 import 'package:ecommerce/core/constant/routes.dart';
 import 'package:ecommerce/core/function/handlingdatacontroller.dart';
+import 'package:ecommerce/core/services/services.dart';
 import 'package:ecommerce/data/datasource/remote/auth/login.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
@@ -24,6 +25,8 @@ class LoginControllerImp extends LoginController {
 
   StatusRequest statusRequest = StatusRequest.none;
 
+  MyServices myServices = Get.find();
+
   showPassword() {
     isshowpassword = isshowpassword == true ? false : true;
     update();
@@ -39,6 +42,23 @@ class LoginControllerImp extends LoginController {
       statusRequest = handlingData(response);
       if (StatusRequest.success == statusRequest) {
         if (response['status'] == "success") {
+          myServices.sharedPreferences.setString(
+            "id",
+            response['data']['users_id'],
+          );
+          myServices.sharedPreferences.setString(
+            "username",
+            response['data']['users_name'],
+          );
+          myServices.sharedPreferences.setString(
+            "email",
+            response['data']['users_email'],
+          );
+          myServices.sharedPreferences.setString(
+            "phone",
+            response['data']['users_phone'],
+          );
+          myServices.sharedPreferences.setString("step", "2");
           Get.offNamed(AppRoute.homepage);
         } else {
           Get.defaultDialog(title: "44".tr, middleText: "47".tr);

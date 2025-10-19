@@ -11,8 +11,13 @@ class MyMiddleware extends GetMiddleware {
   @override
   // ignore: body_might_complete_normally_nullable
   RouteSettings? redirect(String? route) {
-    if (myServices.sharedPreferences.getString("onboarding") == "1") {
+    if (myServices.sharedPreferences.getString("step") == "2") {
+      return RouteSettings(name: AppRoute.homepage);
+    }
+    if (myServices.sharedPreferences.getString("step") == "1") {
+      //هدي تاع اللغة
       return RouteSettings(name: AppRoute.login);
     }
+    return null;
   }
 }
