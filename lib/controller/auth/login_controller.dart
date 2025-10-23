@@ -81,6 +81,7 @@ class LoginControllerImp extends LoginController {
   void onInit() {
     FirebaseMessaging.instance.getToken().then((value) {
       print(value);
+      // ignore: unused_local_variable
       String? tokrn = value;
     });
     email = TextEditingController();

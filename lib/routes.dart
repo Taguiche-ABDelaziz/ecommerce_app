@@ -7,7 +7,7 @@ import 'package:ecommerce/view/screnn/auth/forgetpassword/success_resetpassword.
 import 'package:ecommerce/view/screnn/auth/success_signup.dart';
 import 'package:ecommerce/view/screnn/auth/forgetpassword/verifycode.dart';
 import 'package:ecommerce/view/screnn/auth/verifycodesignup.dart';
-import 'package:ecommerce/view/screnn/home.dart';
+import 'package:ecommerce/view/screnn/homescrenn.dart';
 import 'package:ecommerce/view/screnn/language.dart';
 import 'package:ecommerce/view/screnn/onboarding.dart';
 import 'package:ecommerce/view/screnn/auth/login.dart';
@@ -38,5 +38,5 @@ List<GetPage<dynamic>>? routes = [
     page: () => const SuccessResetPassword(),
   ),
   //Home
-  GetPage(name: AppRoute.homepage, page: () => const HomePage()),
+  GetPage(name: AppRoute.homepage, page: () => const HomeScrenn()),
 ];

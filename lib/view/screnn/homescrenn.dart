@@ -1,0 +1,24 @@
+import 'package:ecommerce/controller/homescrenn_conteoller.dart';
+import 'package:ecommerce/view/widget/home/custombottomappbarhome.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+class HomeScrenn extends StatelessWidget {
+  const HomeScrenn({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    Get.put(HomeScrennConteollerImp());
+    return GetBuilder<HomeScrennConteollerImp>(
+      builder: (controller) => Scaffold(
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          child: Icon(Icons.shopping_basket_outlined),
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        bottomNavigationBar: CustomBottomAppbarHome(),
+        body: controller.listPage.elementAt(controller.currentpage),
+      ),
+    );
+  }
+}

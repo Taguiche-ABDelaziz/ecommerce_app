@@ -110,7 +110,12 @@ class MyTranslation extends Translations {
       "49": "Verification code not found",
       "50": "Passwords do not match",
       "51": "Try again",
-      "52" : "Find Product",
+      "52": "Find Product",
+      "53": "Product for you",
+      "54":"Home", 
+      "55":"Settings", 
+      "56":"Profile", 
+      "57":"Favorite", 
       
     },
   };

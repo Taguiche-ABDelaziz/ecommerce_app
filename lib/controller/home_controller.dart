@@ -16,7 +16,7 @@ class HomeControllerImp extends HomeController {
 
   //List data = [];
   List categories = [];
-  //List items = [];
+  List items = [];
 
   HomeData homeData = HomeData(Get.find());
 
@@ -31,6 +31,7 @@ class HomeControllerImp extends HomeController {
 
   @override
   void onInit() {
+    getData();
     initialData();
     super.onInit();
   }
@@ -45,7 +46,7 @@ class HomeControllerImp extends HomeController {
     if (StatusRequest.success == statusRequest) {
       if (response['status'] == "success") {
         categories.addAll(response['categories']);
-        //items.addAll(response['items']);
+        items.addAll(response['items']);
       } else {
         statusRequest = StatusRequest.failure;
       }

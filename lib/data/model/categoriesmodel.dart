@@ -22,7 +22,7 @@ class CategoriesModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = {};
     data['categores_id'] = this.categoresId;
     data['categores_name'] = this.categoresName;
     data['categores_name_ar'] = this.categoresNameAr;

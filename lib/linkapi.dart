@@ -1,5 +1,12 @@
 class AppLink {
   static const String server = "https://mceefans.consubat.com/ecommerce";
+
+  //========= Image ==========
+
+  static const String imagestatic =
+      "https://mceefans.consubat.com/ecommerce/upload";
+  static const String imagesCategories = "$imagestatic/categories";
+  static const String imagesItems = "$imagestatic/items";
   //test
   static const String test = "$server/test.php";
 

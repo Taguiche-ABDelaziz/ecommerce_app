@@ -5,11 +5,8 @@ class AppImageAsset {
   static const String ologo = "$rootimages/logo.png";
   //static const String onjson = "$rootimages/Shopping Bag.json";
 
-  //static const String onBoardingImageOne = "$rootimages/one.PNG";
   static const String onBoardingImageOne = "$rootimages/One.json";
-  //static const String onBoardingImageOne = "$rootimages/one.PNG";
   static const String onBoardingImageTwo = "$rootimages/two.json";
-  //static const String onBoardingImageThree = "$rootimages/three.PNG";
   static const String onBoardingImageThree = "$rootimages/three.json";
   static const String loading = "$rootLottie/loading.json";
   static const String offline = "$rootLottie/offline.json";

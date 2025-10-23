@@ -1,5 +1,10 @@
 import 'package:ecommerce/controller/home_controller.dart';
-import 'package:ecommerce/core/constant/color.dart';
+import 'package:ecommerce/core/class/handlingdataview.dart';
+import 'package:ecommerce/view/widget/home/customappbar.dart';
+import 'package:ecommerce/view/widget/home/customcardhome.dart';
+import 'package:ecommerce/view/widget/home/customtitlehome.dart';
+import 'package:ecommerce/view/widget/home/listcategorieshome.dart';
+import 'package:ecommerce/view/widget/home/listitmshome.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -8,89 +13,28 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    HomeControllerImp controller = Get.put(HomeControllerImp());
-    return Scaffold(
-      body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 15),
-        child: ListView(
-          children: [
-            Container(
-              margin: EdgeInsets.only(top: 10),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.search, color: Colors.grey[600]),
-                        hintText: "52".tr,
-                        hintStyle: TextStyle(fontSize: 18),
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide.none,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        filled: true,
-                        fillColor: Colors.grey[200],
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: 10),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Colors.grey[200],
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    width: 55,
-                    height: 68,
-                    padding: EdgeInsets.symmetric(vertical: 8),
-                    child: IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.notifications_active_outlined,
-                        size: 30,
-                        color: Colors.grey[600],
-                      ),
-                    ),
-                  ),
-                ],
+    Get.put(HomeControllerImp());
+    return GetBuilder<HomeControllerImp>(
+      builder: (controller) => HandlingDataView(
+        statusRequest: controller.statusRequest,
+        widget: Container(
+          padding: EdgeInsets.symmetric(horizontal: 15),
+          child: ListView(
+            children: [
+              CustomAppBar(
+                titleappbar: "52".tr,
+                onPressedIcon: () {},
+                onPressedSearch: () {},
               ),
-            ),
-            Container(
-              margin: EdgeInsets.symmetric(vertical: 15),
-              child: Stack(
-                children: [
-                  Container(
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      color: AppColor.primaryColor,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: ListTile(
-                      title: Text(
-                        "A summer surprise",
-                        style: TextStyle(color: Colors.white, fontSize: 20),
-                      ),
-                      subtitle: Text(
-                        "Cashback 20%",
-                        style: TextStyle(color: Colors.white, fontSize: 30),
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    top: -20,
-                    right: -20,
-                    child: Container(
-                      height: 160,
-                      width: 160,
-                      decoration: BoxDecoration(
-                        color: AppColor.secoundColor,
-                        borderRadius: BorderRadius.circular(160),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
+              CustomCardHome(title: "A summer surprise", body: "Cashback 20%"),
+              CustomTitleHome(title: "Categories"),
+              ListCategoriesHome(),
+              CustomTitleHome(title: "Product for you"),
+              ListItmsHome(),
+              CustomTitleHome(title: "offer"),
+              ListItmsHome(),
+            ],
+          ),
         ),
       ),
     );
