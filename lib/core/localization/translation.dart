@@ -56,6 +56,12 @@ class MyTranslation extends Translations {
       "49": "رمز التحقق غير موجود",
       "50": "كلمتا المرور غير متطابقتين",
       "51": "حاول مرة أخرى",
+      "52": "ابحث عن منتج",
+      "53": "منتجات لك",
+      "54": "الرئيسية",
+      "55": "الإعدادات",
+      "56": "الملف الشخصي",
+      "57": "المفضلة",
     },
     "en": {
       "1": "Choose Language",
@@ -111,12 +117,11 @@ class MyTranslation extends Translations {
       "50": "Passwords do not match",
       "51": "Try again",
       "52": "Find Product",
-      "53": "Product for you",
-      "54":"Home", 
-      "55":"Settings", 
-      "56":"Profile", 
-      "57":"Favorite", 
-      
+      "53": "Products for you",
+      "54": "Home",
+      "55": "Settings",
+      "56": "Profile",
+      "57": "Favorite",
     },
   };
 }

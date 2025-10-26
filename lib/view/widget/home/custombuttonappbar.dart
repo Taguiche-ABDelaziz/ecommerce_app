@@ -5,7 +5,7 @@ class CustomButtonAppbar extends StatelessWidget {
   final void Function()? onPressed;
   final String textbutton;
   final IconData? icondata;
-  final bool? active ;
+  final bool? active;
   const CustomButtonAppbar({
     Key? key,
     required this.onPressed,
@@ -23,7 +23,7 @@ class CustomButtonAppbar extends StatelessWidget {
         children: [
           Icon(
             icondata,
-            color: active == true ? AppColor.primaryColor : Colors.black,
+            color: active == true ? AppColor.primaryColor : AppColor.grey,
           ),
           Text(
             textbutton,

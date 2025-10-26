@@ -8,6 +8,7 @@ import 'package:ecommerce/view/screnn/auth/success_signup.dart';
 import 'package:ecommerce/view/screnn/auth/forgetpassword/verifycode.dart';
 import 'package:ecommerce/view/screnn/auth/verifycodesignup.dart';
 import 'package:ecommerce/view/screnn/homescrenn.dart';
+import 'package:ecommerce/view/screnn/items.dart';
 import 'package:ecommerce/view/screnn/language.dart';
 import 'package:ecommerce/view/screnn/onboarding.dart';
 import 'package:ecommerce/view/screnn/auth/login.dart';
@@ -39,4 +40,5 @@ List<GetPage<dynamic>>? routes = [
   ),
   //Home
   GetPage(name: AppRoute.homepage, page: () => const HomeScrenn()),
+  GetPage(name: AppRoute.items, page: () => const Items()),
 ];

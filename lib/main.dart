@@ -26,7 +26,6 @@ class MyApp extends StatelessWidget {
       locale: controller.language,
       theme: controller.appTheme,
       initialBinding: IntialBindings(),
-
       getPages: routes,
     );
   }

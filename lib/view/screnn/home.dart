@@ -1,6 +1,6 @@
 import 'package:ecommerce/controller/home_controller.dart';
 import 'package:ecommerce/core/class/handlingdataview.dart';
-import 'package:ecommerce/view/widget/home/customappbar.dart';
+import 'package:ecommerce/view/widget/customappbar.dart';
 import 'package:ecommerce/view/widget/home/customcardhome.dart';
 import 'package:ecommerce/view/widget/home/customtitlehome.dart';
 import 'package:ecommerce/view/widget/home/listcategorieshome.dart';
@@ -28,11 +28,11 @@ class HomePage extends StatelessWidget {
               ),
               CustomCardHome(title: "A summer surprise", body: "Cashback 20%"),
               CustomTitleHome(title: "Categories"),
-              ListCategoriesHome(),
+              const ListCategoriesHome(),
               CustomTitleHome(title: "Product for you"),
-              ListItmsHome(),
+              const ListItmsHome(),
               CustomTitleHome(title: "offer"),
-              ListItmsHome(),
+              const ListItmsHome(),
             ],
           ),
         ),

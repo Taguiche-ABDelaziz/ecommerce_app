@@ -23,4 +23,6 @@ class AppLink {
   static const String verifycode = "$server/forgetpassword/verifycode.php";
   //========= Home ==========
   static const String home = "$server/home.php";
+  //========= Items ==========
+  static const String items = "$server/items/items.php";
 }
