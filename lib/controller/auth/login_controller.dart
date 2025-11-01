@@ -5,7 +5,6 @@ import 'package:ecommerce/core/services/services.dart';
 import 'package:ecommerce/data/datasource/remote/auth/login.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 
 abstract class LoginController extends GetxController {
   login();
@@ -42,24 +41,31 @@ class LoginControllerImp extends LoginController {
       statusRequest = handlingData(response);
       if (StatusRequest.success == statusRequest) {
         if (response['status'] == "success") {
-          myServices.sharedPreferences.setString(
-            "id",
-            response['data']['users_id'],
-          );
-          myServices.sharedPreferences.setString(
-            "username",
-            response['data']['users_name'],
-          );
-          myServices.sharedPreferences.setString(
-            "email",
-            response['data']['users_email'],
-          );
-          myServices.sharedPreferences.setString(
-            "phone",
-            response['data']['users_phone'],
-          );
-          myServices.sharedPreferences.setString("step", "2");
-          Get.offNamed(AppRoute.homepage);
+          if (response['data']['users_approve'] == "1") {
+            myServices.sharedPreferences.setString(
+              "id",
+              response['data']['users_id'],
+            );
+            myServices.sharedPreferences.setString(
+              "username",
+              response['data']['users_name'],
+            );
+            myServices.sharedPreferences.setString(
+              "email",
+              response['data']['users_email'],
+            );
+            myServices.sharedPreferences.setString(
+              "phone",
+              response['data']['users_phone'],
+            );
+            myServices.sharedPreferences.setString("step", "2");
+            Get.offNamed(AppRoute.homepage);
+          } else {
+            Get.toNamed(
+              AppRoute.verifyCodeSignup,
+              arguments: {"email": email.text},
+            );
+          }
         } else {
           Get.defaultDialog(title: "44".tr, middleText: "47".tr);
           statusRequest = StatusRequest.failure;
@@ -79,11 +85,11 @@ class LoginControllerImp extends LoginController {
 
   @override
   void onInit() {
-    FirebaseMessaging.instance.getToken().then((value) {
-      print(value);
-      // ignore: unused_local_variable
-      String? tokrn = value;
-    });
+    // FirebaseMessaging.instance.getToken().then((value) {
+    //   print(value);
+    // ignore: unused_local_variable
+    //  String? tokrn = value;
+    //});
     email = TextEditingController();
     password = TextEditingController();
     super.onInit();

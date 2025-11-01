@@ -62,6 +62,9 @@ class MyTranslation extends Translations {
       "55": "الإعدادات",
       "56": "الملف الشخصي",
       "57": "المفضلة",
+      "58": "إشعار",
+      "59": "تم حذف المنتج من المفضلة",
+      "60": "تم إضافة المنتج إلى المفضلة",
     },
     "en": {
       "1": "Choose Language",
@@ -122,6 +125,10 @@ class MyTranslation extends Translations {
       "55": "Settings",
       "56": "Profile",
       "57": "Favorite",
+      "58": "Notification",
+      "59": "Product removed from favorites",
+      "60": "Product added to favorites",
+      "61": "Resend verfiy code ",
     },
   };
 }

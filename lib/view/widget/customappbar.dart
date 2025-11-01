@@ -4,12 +4,13 @@ class CustomAppBar extends StatelessWidget {
   final String titleappbar;
   final void Function()? onPressedIcon;
   final void Function()? onPressedSearch;
-  const CustomAppBar(
-    {
+  final void Function()? onPressedIconFavorite;
+  const CustomAppBar({
     super.key,
     required this.titleappbar,
     this.onPressedIcon,
     this.onPressedSearch,
+    required this.onPressedIconFavorite,
   });
 
   @override
@@ -51,6 +52,24 @@ class CustomAppBar extends StatelessWidget {
               onPressed: onPressedIcon,
               icon: Icon(
                 Icons.notifications_active_outlined,
+                size: 30,
+                color: Colors.grey[600],
+              ),
+            ),
+          ),
+          SizedBox(width: 10),
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.grey[200],
+              borderRadius: BorderRadius.circular(20),
+            ),
+            width: 55,
+            height: 68,
+            padding: EdgeInsets.symmetric(vertical: 8),
+            child: IconButton(
+              onPressed: onPressedIconFavorite,
+              icon: Icon(
+                Icons.favorite_outline,
                 size: 30,
                 color: Colors.grey[600],
               ),

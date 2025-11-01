@@ -1,4 +1,4 @@
-import 'package:ecommerce/controller/homescrenn_conteoller.dart';
+import 'package:ecommerce/controller/homescrenn_controller.dart';
 import 'package:ecommerce/core/constant/color.dart';
 import 'package:ecommerce/view/widget/home/custombottomappbarhome.dart';
 import 'package:flutter/material.dart';
@@ -9,8 +9,8 @@ class HomeScrenn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(HomeScrennConteollerImp());
-    return GetBuilder<HomeScrennConteollerImp>(
+    Get.put(HomeScrennControllerImp());
+    return GetBuilder<HomeScrennControllerImp>(
       builder: (controller) => Scaffold(
         floatingActionButton: FloatingActionButton(
           backgroundColor: AppColor.primaryColor,

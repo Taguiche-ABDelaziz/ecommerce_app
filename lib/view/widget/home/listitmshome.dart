@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce/controller/home_controller.dart';
 import 'package:ecommerce/data/model/itemsmodel.dart';
 import 'package:ecommerce/linkapi.dart';
@@ -35,7 +36,8 @@ class ItemsHome extends StatelessWidget {
         Container(
           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           margin: EdgeInsets.symmetric(horizontal: 10),
-          child: Image.network(
+          child: CachedNetworkImage(
+                    imageUrl: 
             "${AppLink.imagesItems}/${itemsModel.itemsImage}",
             height: 100,
             width: 150,

@@ -1,23 +1,22 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:ecommerce/controller/favorite_controller.dart';
-import 'package:ecommerce/controller/items_controller.dart';
+import 'package:ecommerce/controller/myfavorite_controller.dart';
 import 'package:ecommerce/core/constant/color.dart';
 import 'package:ecommerce/core/function/translatedabase.dart';
-import 'package:ecommerce/data/model/itemsmodel.dart';
+import 'package:ecommerce/data/model/myfavroite.dart';
 import 'package:ecommerce/linkapi.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class CustomListItems extends GetView<ItemsControllerImp> {
-  final ItemsModel itemsModel;
+class CustomListFavoirteItems extends GetView<Myfavoritecontroller> {
+  final MyFavoriteModel myFavoriteModel;
 
-  const CustomListItems({super.key, required this.itemsModel});
+  const CustomListFavoirteItems({super.key, required this.myFavoriteModel});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        controller.goToPageProfuctDetails(itemsModel);
+        // controller.goToPageProfuctDetails(myFavoriteModel);
       },
       child: Card(
         child: Padding(
@@ -27,9 +26,10 @@ class CustomListItems extends GetView<ItemsControllerImp> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Hero(
-                tag: "${itemsModel.itemsId}",
+                tag: "${myFavoriteModel.itemsId}",
                 child: CachedNetworkImage(
-                  imageUrl: "${AppLink.imagesItems}/${itemsModel.itemsImage}",
+                  imageUrl:
+                      "${AppLink.imagesItems}/${myFavoriteModel.itemsImage}",
                   fit: BoxFit.fill,
                   height: 120,
                 ),
@@ -37,8 +37,8 @@ class CustomListItems extends GetView<ItemsControllerImp> {
               SizedBox(height: 10),
               Text(
                 translateDatabase(
-                  itemsModel.itemsNameAr!,
-                  itemsModel.itemsName!,
+                  myFavoriteModel.itemsNameAr!,
+                  myFavoriteModel.itemsName!,
                 ),
                 textAlign: TextAlign.center,
                 style: TextStyle(
@@ -71,7 +71,7 @@ class CustomListItems extends GetView<ItemsControllerImp> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "${itemsModel.itemsPrice} \$",
+                    "${myFavoriteModel.itemsPrice} \$",
                     style: TextStyle(
                       color: AppColor.primaryColor,
                       fontSize: 15,
@@ -79,23 +79,13 @@ class CustomListItems extends GetView<ItemsControllerImp> {
                       fontFamily: "sans",
                     ),
                   ),
-                  GetBuilder<FavoriteController>(
-                    builder: (controller) => IconButton(
-                      onPressed: () {
-                        if (controller.isFavorite[itemsModel.itemsId] == "1") {
-                          controller.setFavorite(itemsModel.itemsId, "0");
-                          controller.removeFavorite(itemsModel.itemsId!);
-                        } else {
-                          controller.setFavorite(itemsModel.itemsId, "1");
-                          controller.addFavorite(itemsModel.itemsId!);
-                        }
-                      },
-                      icon: Icon(
-                        controller.isFavorite[itemsModel.itemsId] == "1"
-                            ? Icons.favorite
-                            : Icons.favorite_border_outlined,
-                        color: AppColor.primaryColor,
-                      ),
+                  IconButton(
+                    onPressed: () {
+                      controller.deletFromFavorite(myFavoriteModel.favoriteId!);
+                    },
+                    icon: Icon(
+                      Icons.delete_outline_outlined,
+                      color: AppColor.primaryColor,
                     ),
                   ),
                 ],

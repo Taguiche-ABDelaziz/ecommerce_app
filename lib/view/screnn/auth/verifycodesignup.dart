@@ -37,7 +37,7 @@ class VerifyCodeSingUp extends StatelessWidget {
                     children: [
                       CustomTextTitelAuth(text: "28".tr),
                       const SizedBox(height: 10),
-                      CustomTextBodyAuthe(text: "30".tr),
+                      CustomTextBodyAuthe(text: "30 ${controller.email} ".tr),
                       const SizedBox(height: 35),
                       OtpTextField(
                         borderRadius: BorderRadius.circular(20),
@@ -50,13 +50,27 @@ class VerifyCodeSingUp extends StatelessWidget {
                         onCodeChanged: (String code) {
                           //handle validation or checks here
                         },
-                        
+
                         //runs when every textfield is filled
                         onSubmit: (String verificationCode) {
                           controller.goTosuccessSinUp(verificationCode);
                         }, // end onSubmit
                       ),
                       SizedBox(height: 25),
+                      InkWell(
+                        onTap: () {
+                          controller.reSemd();
+                        },
+                        child: Center(
+                          child: Text(
+                            "61".tr,
+                            style: TextStyle(
+                              color: AppColor.black,
+                              fontSize: 20,
+                            ),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),

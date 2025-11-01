@@ -2,11 +2,11 @@ import 'package:ecommerce/view/screnn/home.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
-abstract class HomeScrennConteoller extends GetxController {
+abstract class HomeScrennController extends GetxController {
   changPage(int i);
 }
 
-class HomeScrennConteollerImp extends HomeScrennConteoller {
+class HomeScrennControllerImp extends HomeScrennController {
   int currentpage = 0;
 
   List<Widget> listPage = [

@@ -1,4 +1,4 @@
-import 'package:ecommerce/controller/homescrenn_conteoller.dart';
+import 'package:ecommerce/controller/homescrenn_controller.dart';
 import 'package:ecommerce/view/widget/home/custombuttonappbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -8,7 +8,7 @@ class CustomBottomAppbarHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<HomeScrennConteollerImp>(
+    return GetBuilder<HomeScrennControllerImp>(
       builder: (controller) => BottomAppBar(
         shape: CircularNotchedRectangle(),
         notchMargin: 10,

@@ -10,17 +10,15 @@ import 'package:ecommerce/view/screnn/auth/verifycodesignup.dart';
 import 'package:ecommerce/view/screnn/homescrenn.dart';
 import 'package:ecommerce/view/screnn/items.dart';
 import 'package:ecommerce/view/screnn/language.dart';
+import 'package:ecommerce/view/screnn/myfavroite.dart';
 import 'package:ecommerce/view/screnn/onboarding.dart';
 import 'package:ecommerce/view/screnn/auth/login.dart';
+import 'package:ecommerce/view/screnn/productdetails.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
 List<GetPage<dynamic>>? routes = [
-  GetPage(
-    name: "/",
-    page: () => const Language(),
-    middlewares: [MyMiddleware()],
-  ),
-  //GetPage(name: "/", page: () => TestView()),
+  GetPage(name: "/",page: () => const Language(),middlewares: [MyMiddleware()],),
+  //GetPage(name: "/", page: () => ProductDetails()),
   // OnBoarding
   GetPage(name: AppRoute.onBoarding, page: () => const OnBoarding()),
   GetPage(
@@ -41,4 +39,6 @@ List<GetPage<dynamic>>? routes = [
   //Home
   GetPage(name: AppRoute.homepage, page: () => const HomeScrenn()),
   GetPage(name: AppRoute.items, page: () => const Items()),
+  GetPage(name: AppRoute.productdetails, page: () => const ProductDetails()),
+  GetPage(name: AppRoute.myfavroite, page: () => const Myfavroite()),
 ];
